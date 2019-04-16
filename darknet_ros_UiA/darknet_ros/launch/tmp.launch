@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<launch>
+  <!-- Console launch prefix -->
+  <arg name="launch_prefix" default=""/>
+  <arg name="Cx_" />
+  <arg name="fx_" />
+  <arg name="Cy_" />
+  <arg name="fy_" />
+  
+  <arg name="topic_in_depth" />
+  <arg name="topic_in_rgb" />
+  <arg name="thresHold" />
+  <arg name="machine_name" />
+
+  <!-- Remap topics -->
+  <remap from="/jetson/sd/image_depth" to="$(arg topic_in_depth)"/>	
+  <remap from="/camera_crop/image_rect_color" to="$(arg topic_in_rgb)"/>
+  <remap from="/darknet_ros/bounding_boxes" to="$(arg machine_name)_darknet_ros/bounding_boxes"/>
+  <remap from="/darknet_ros/detection_image" to="$(arg machine_name)_darknet_ros/detection_image"/>
+  <remap from="/darknet_ros/found_object" to="$(arg machine_name)_darknet_ros/found_object"/>
+
+
+  <!-- Config and weights folder. -->
+  <arg name="yolo_weights_path"          default="$(find darknet_ros)/yolo_network_config/weights"/>
+  <arg name="yolo_config_path"           default="$(find darknet_ros)/yolo_network_config/cfg"/>
+
+  <!-- Load parameters -->
+  <rosparam command="load" ns="$(arg machine_name)_darknet_ros" file="$(find darknet_ros)/config/ros.yaml"/>
+  <rosparam command="load" ns="$(arg machine_name)_darknet_ros" file="$(find darknet_ros)/config/yolov2-tiny.yaml"/>
+
+  <!-- Start darknet and ros wrapper -->
+<node pkg="darknet_ros" type="darknet_ros" name="$(arg machine_name)_darknet_ros" machine="$(arg machine_name)">
+    <param name="weights_path"          value="$(arg yolo_weights_path)" />
+    <param name="config_path"           value="$(arg yolo_config_path)" />
+    <param name="Cx"  value="$(arg Cx_)"/>
+    <param name="fx"  value="$(arg fx_)"/>
+    <param name="Cy"  value="$(arg Cy_)"/>
+    <param name="fy"  value="$(arg fy_)"/>
+    <param name="threshold"  value="$(arg thresHold)"/>
+
+  </node>
+
+ <!--<node name="republish" type="republish" pkg="image_transport" output="screen" args="compressed in:=/front_camera/image_raw raw out:=/camera/image_raw" /> -->
+</launch>

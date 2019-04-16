@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	<launch>
+	<machine name="master" address="localhost" />
+	<machine name="jetson1" address="jetson1.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+	<machine name="jetson2" address="jetson2.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+	<machine name="jetson3" address="jetson3.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+	<machine name="jetson4" address="jetson4.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+	<machine name="jetson5" address="jetson5.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+	<machine name="jetson6" address="jetson6.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+	
+	<!-- Jetson1 -->
+
+	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
+	<arg name="topic_in_depth"  value="/jetson1/sd/image_depth"/>
+	<arg name="topic_in_rgb"  value="/jetson1/sd/image_color_rect"/>
+	<arg name="machine_name"  value="jetson1"/>
+
+	<arg name="lengthAdded_"  value="200"/>
+	<arg name="thresHold"  value="0.4"/>
+        <arg name="Cx_"  value="254.281"/>
+        <arg name="fx_"  value="366.069"/>
+        <arg name="Cy_"  value="210.482"/>
+        <arg name="fy_"  value="366.069"/>
+	<arg name="xr_"  value="-2.377"/>
+        <arg name="yr_"  value="0.001"/>
+        <arg name="zr_"  value="0.701"/>
+        <arg name="xt_"  value="7798"/>
+        <arg name="yt_"  value="496"/>
+        <arg name="zt_"  value="4175"/>
+	</include>
+	
+	<!-- Jetson2 -->
+
+	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
+	<arg name="topic_in_depth"  value="/jetson2/sd/image_depth"/>
+	<arg name="topic_in_rgb"  value="/jetson2/sd/image_color_rect"/>
+	<arg name="machine_name"  value="jetson2"/>
+
+	<arg name="lengthAdded_"  value="200"/>
+	<arg name="thresHold"  value="0.4"/>
+        <arg name="Cx_"  value="256.056"/>
+        <arg name="fx_"  value="365.037"/>
+        <arg name="Cy_"  value="205.287"/>
+        <arg name="fy_"  value="365.037"/>
+	<arg name="xr_"  value="-2.469"/>
+        <arg name="yr_"  value="0.036"/>
+        <arg name="zr_"  value="-0.790"/>
+        <arg name="xt_"  value="1729"/>
+        <arg name="yt_"  value="501"/>
+        <arg name="zt_"  value="4135"/>
+	</include>
+
+	<!-- Jetson3 -->
+
+	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
+	<arg name="topic_in_depth"  value="/jetson3/sd/image_depth"/>
+	<arg name="topic_in_rgb"  value="/jetson3/sd/image_color_rect"/>
+	<arg name="machine_name"  value="jetson3"/>
+
+	<arg name="lengthAdded_"  value="200"/>
+	<arg name="thresHold"  value="0.4"/>
+        <arg name="Cx_"  value="258.137"/>
+        <arg name="fx_"  value="365.331"/>
+        <arg name="Cy_"  value="208.098"/>
+        <arg name="fy_"  value="365.331"/>
+	<arg name="xr_"  value="-2.504"/>
+        <arg name="yr_"  value="-0.001"/>
+        <arg name="zr_"  value="1.544"/>
+        <arg name="xt_"  value="9522"/>
+        <arg name="yt_"  value="5275"/>
+        <arg name="zt_"  value="4353"/>
+	</include>
+
+	
+	
+	<!-- Jetson4 -->
+
+	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
+	<arg name="topic_in_depth"  value="/jetson4/sd/image_depth"/>
+	<arg name="topic_in_rgb"  value="/jetson4/sd/image_color_rect"/>
+	<arg name="machine_name"  value="jetson4"/>
+
+	<arg name="lengthAdded_"  value="200"/>
+	<arg name="thresHold"  value="0.4"/>
+        <arg name="Cx_"  value="255.802"/>
+        <arg name="fx_"  value="365.176"/>
+        <arg name="Cy_"  value="208.819"/>
+        <arg name="fy_"  value="365.176"/>
+	<arg name="xr_"  value="-2.541"/>
+        <arg name="yr_"  value="-0.009"/>
+        <arg name="zr_"  value="-1.557"/>
+        <arg name="xt_"  value="553"/>
+        <arg name="yt_"  value="4995"/>
+        <arg name="zt_"  value="4353"/>
+	</include>
+	
+	<!-- Jetson5 -->
+
+	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
+	<arg name="topic_in_depth"  value="/jetson5/sd/image_depth"/>
+	<arg name="topic_in_rgb"  value="/jetson5/sd/image_color_rect"/>
+	<arg name="machine_name"  value="jetson5"/>
+
+	<arg name="lengthAdded_"  value="200"/>
+	<arg name="thresHold"  value="0.4"/>
+        <arg name="Cx_"  value="258.127"/>
+        <arg name="fx_"  value="364.270"/>
+        <arg name="Cy_"  value="205.126"/>
+        <arg name="fy_"  value="364.270"/>
+	<arg name="xr_"  value="-2.431"/>
+        <arg name="yr_"  value="-0.023"/>
+        <arg name="zr_"  value="2.212"/>
+        <arg name="xt_"  value="8879"/>
+        <arg name="yt_"  value="9192"/>
+        <arg name="zt_"  value="4194"/>
+	</include>
+	
+	<!-- Jetson6 -->
+
+	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
+	<arg name="topic_in_depth"  value="/jetson6/sd/image_depth"/>
+	<arg name="topic_in_rgb"  value="/jetson6/sd/image_color_rect"/>
+	<arg name="machine_name"  value="jetson6"/>
+
+	<arg name="lengthAdded_"  value="200"/>
+	<arg name="thresHold"  value="0.4"/>
+        <arg name="Cx_"  value="257.007"/>
+        <arg name="fx_"  value="367.574"/>
+        <arg name="Cy_"  value="206.327"/>
+        <arg name="fy_"  value="367.574"/>
+	<arg name="xr_"  value="-2.401"/>
+        <arg name="yr_"  value="-0.008"/>
+        <arg name="zr_"  value="-2.120"/>
+        <arg name="xt_"  value="559"/>
+        <arg name="yt_"  value="9136"/>
+        <arg name="zt_"  value="4145"/>
+	</include>
+ 	
+	</launch>

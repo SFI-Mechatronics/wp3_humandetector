@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+<node pkg="person_pointcloud" type="crop_box" name="crop_box" 
+output="screen"> 
+</node>
+ 
+<param name="minPoints"  value="100"/> 
+
+<node pkg="person_pointcloud" type="segmentation_jetson1" name="segmentation_jetson1"/>
+
+<node pkg="person_pointcloud" type="segmentation_jetson2" name="segmentation_jetson2"/>
+
+<node pkg="person_pointcloud" type="segmentation_jetson3" name="segmentation_jetson3"/>
+
+<node pkg="person_pointcloud" type="segmentation_jetson4" name="segmentation_jetson4"/>
+
+<node pkg="person_pointcloud" type="segmentation_jetson5" name="segmentation_jetson5"/>
+
+<node pkg="person_pointcloud" type="segmentation_jetson6" name="segmentation_jetson6"/>
+
+
+</launch>

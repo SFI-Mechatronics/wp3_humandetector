@@ -1,0 +1,1 @@
+The purpose with this package is to visualize the persons found by showing a cylinder that encapculate the persons. The script "one_cyl" is for one person only and is based on the "trackin2"-script witch aims to find the mean coordinates based on six cameras. The "cylinders"-script is for more people(max 5), and is not as steady/accurate as the one-cyl.
