@@ -914,7 +914,7 @@ namespace darknet_ros
             Zg = 0.0;
         }
 
-         if(abs(Xg-Xg_temp[p]) > 400 || abs(Yg-Yg_temp[p]) > 400 || abs(Xg - Xg_temp[p]) < 1.0)
+         if(abs(Xg-Xg_temp[p]) > 400 || abs(Yg-Yg_temp[p]) > 400)
          {
              Xg = 0.0;
              Yg = 0.0;

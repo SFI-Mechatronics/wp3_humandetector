@@ -41,7 +41,7 @@ cloud_cb (const sensor_msgs::PointCloud2ConstPtr& cloud_J2)
 
   // Clustering
   pcl::EuclideanClusterExtraction<pcl::PointXYZ> cluster;
-  cluster.setClusterTolerance(0.1);
+  cluster.setClusterTolerance(0.15);
   cluster.setMinClusterSize(minPoints);
   cluster.setMaxClusterSize(2000);
   cluster.setSearchMethod(tree);
@@ -51,21 +51,32 @@ cloud_cb (const sensor_msgs::PointCloud2ConstPtr& cloud_J2)
   pcl::PointCloud<pcl::PointXYZ>::Ptr point_cloud_segmented(new pcl::PointCloud<pcl::PointXYZ>);
 
 
+bool valid = false;
 
   for (std::vector<pcl::PointIndices>::const_iterator i = cluster_indices.begin(); i < cluster_indices.end(); i++)
           {
-        for (std::vector<int>::const_iterator j = i->indices.begin(); j < i->indices.end(); j++)
-                    {
-                pcl::PointXYZ point;
-                point.x = point_cloudPtr->points[*j].x;
-                point.y = point_cloudPtr->points[*j].y;
-                point.z = point_cloudPtr->points[*j].z;
+	  valid = false;
+	for (std::vector<int>::const_iterator j = i->indices.begin(); j < i->indices.end(); j++)
+		{		
+			if(point_cloudPtr->points[*j].z > 0.5)
+			{
+			valid = true;
+			}
+		}
+	if(valid == true)
+	{	
+        	for (std::vector<int>::const_iterator j = i->indices.begin(); j < i->indices.end(); j++)
+           	{
+                	pcl::PointXYZ point;
+              		point.x = point_cloudPtr->points[*j].x;
+                	point.y = point_cloudPtr->points[*j].y;
+                	point.z = point_cloudPtr->points[*j].z;
 
 
-                point_cloud_segmented->push_back(point);
+                	point_cloud_segmented->push_back(point);
 
-            }
-
+            	}
+	}
     }
 
   // Convert to ROS data type
