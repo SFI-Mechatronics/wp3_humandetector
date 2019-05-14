@@ -1,1 +1,5 @@
-*.weights
+yolov2.weights
+yolov2-tiny.weights
+yolov2-tiny-voc.weights
+yolov3.weights
+yolov2-uia.weights
