@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <launch>
+    <machine name="master" address="localhost" />
+    <machine name="jetson1" address="jetson1.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+    <machine name="jetson2" address="jetson2.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+    <machine name="jetson3" address="jetson3.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+    <machine name="jetson4" address="jetson4.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+    <machine name="jetson5" address="jetson5.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+    <machine name="jetson6" address="jetson6.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+
+
   <!-- Console launch prefix -->
   <arg name="launch_prefix" default=""/>
   <arg name="lengthAdded_" />
@@ -30,8 +39,11 @@
 
 
   <!-- Config and weights folder. -->
-  <arg name="yolo_weights_path"          default="$(find darknet_ros)/yolo_network_config/weights"/>
-  <arg name="yolo_config_path"           default="$(find darknet_ros)/yolo_network_config/cfg"/>
+<!--  <arg name="yolo_weights_path"          default="$(find darknet_ros)/yolo_network_config/weights"/>-->
+    <arg name="yolo_weights_path"           default="/home/nvidia/catkin_ws/src/Master2019_UiA_HumanDetection/darknet_ros_UiA/darknet_ros/yolo_network_config/weights"/>
+<!--  <arg name="yolo_config_path"           default="$(find darknet_ros)/yolo_network_config/cfg"/>-->
+  <arg name="yolo_config_path"           default="/home/nvidia/catkin_ws/src/Master2019_UiA_HumanDetection/darknet_ros_UiA/darknet_ros/yolo_network_config/cfg"/>
+
 
   <!-- Load parameters -->
   <rosparam command="load" ns="$(arg machine_name)_darknet_ros" file="$(find darknet_ros)/config/ros.yaml"/>

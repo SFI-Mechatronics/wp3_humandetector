@@ -7,8 +7,7 @@
 	<machine name="jetson3" address="jetson3.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
 	<machine name="jetson4" address="jetson4.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
 	<machine name="jetson5" address="jetson5.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
-	<machine name="jetson6" address="jetson6.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
-	
+	<machine name="jetson6" address="jetson6.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>	
 	<!-- Jetson1 -->
 
 	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
@@ -17,7 +16,7 @@
 	<arg name="machine_name"  value="jetson1"/>
 
 	<arg name="lengthAdded_"  value="200"/>
-	<arg name="thresHold"  value="0.4"/>
+        <arg name="thresHold"  value="0.5"/>
         <arg name="Cx_"  value="254.281"/>
         <arg name="fx_"  value="366.069"/>
         <arg name="Cy_"  value="210.482"/>
@@ -38,7 +37,7 @@
 	<arg name="machine_name"  value="jetson2"/>
 
 	<arg name="lengthAdded_"  value="200"/>
-	<arg name="thresHold"  value="0.4"/>
+        <arg name="thresHold"  value="0.5"/>
         <arg name="Cx_"  value="256.056"/>
         <arg name="fx_"  value="365.037"/>
         <arg name="Cy_"  value="205.287"/>
@@ -59,7 +58,7 @@
 	<arg name="machine_name"  value="jetson3"/>
 
 	<arg name="lengthAdded_"  value="200"/>
-	<arg name="thresHold"  value="0.4"/>
+        <arg name="thresHold"  value="0.5"/>
         <arg name="Cx_"  value="258.137"/>
         <arg name="fx_"  value="365.331"/>
         <arg name="Cy_"  value="208.098"/>
@@ -82,7 +81,7 @@
 	<arg name="machine_name"  value="jetson4"/>
 
 	<arg name="lengthAdded_"  value="200"/>
-	<arg name="thresHold"  value="0.4"/>
+        <arg name="thresHold"  value="0.5"/>
         <arg name="Cx_"  value="255.802"/>
         <arg name="fx_"  value="365.176"/>
         <arg name="Cy_"  value="208.819"/>
@@ -103,7 +102,7 @@
 	<arg name="machine_name"  value="jetson5"/>
 
 	<arg name="lengthAdded_"  value="200"/>
-	<arg name="thresHold"  value="0.4"/>
+        <arg name="thresHold"  value="0.5"/>
         <arg name="Cx_"  value="258.127"/>
         <arg name="fx_"  value="364.270"/>
         <arg name="Cy_"  value="205.126"/>
@@ -124,7 +123,7 @@
 	<arg name="machine_name"  value="jetson6"/>
 
 	<arg name="lengthAdded_"  value="200"/>
-	<arg name="thresHold"  value="0.4"/>
+        <arg name="thresHold"  value="0.5"/>
         <arg name="Cx_"  value="257.007"/>
         <arg name="fx_"  value="367.574"/>
         <arg name="Cy_"  value="206.327"/>
