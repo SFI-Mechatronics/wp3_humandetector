@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+    <!--detect perople-->
+    <include file="$(find darknet_ros)/launch/all_nodes.launch"/>
+
+    <!--fuse coordinates-->
+    <node pkg="darknet_ros" type="sensor_fusion" name="sensor_fusion"/>
+
+    <!--create point clouds, cropped and segmented-->
+    <include file="$(find person_pointcloud)/launch/person_points.launch"/>
+
+    <!--create cylinder-->
+    <node pkg="using_markers" type="one_cyl" name="one_cyl"/>
+
+
+</launch>
