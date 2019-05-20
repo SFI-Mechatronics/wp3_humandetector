@@ -293,6 +293,7 @@ if(i > 0)
         sumX=arrayX[j] + sumX;
         sumY=arrayY[j] + sumY;
         sumZ=arrayZ[j] + sumZ;
+	dummy = 1;
 
     }
     array.data[0] = (sumX / i) / 1000;
