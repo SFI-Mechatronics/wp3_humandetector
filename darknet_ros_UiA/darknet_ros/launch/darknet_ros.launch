@@ -40,9 +40,9 @@
 
   <!-- Config and weights folder. -->
 <!--  <arg name="yolo_weights_path"          default="$(find darknet_ros)/yolo_network_config/weights"/>-->
-    <arg name="yolo_weights_path"           default="/home/nvidia/catkin_ws/src/Master2019_UiA_HumanDetection/darknet_ros_UiA/darknet_ros/yolo_network_config/weights"/>
+    <arg name="yolo_weights_path"           default="/home/nvidia/catkin_ws/src/wp3_humandetector/darknet_ros_UiA/darknet_ros/yolo_network_config/weights"/>
 <!--  <arg name="yolo_config_path"           default="$(find darknet_ros)/yolo_network_config/cfg"/>-->
-  <arg name="yolo_config_path"           default="/home/nvidia/catkin_ws/src/Master2019_UiA_HumanDetection/darknet_ros_UiA/darknet_ros/yolo_network_config/cfg"/>
+  <arg name="yolo_config_path"           default="/home/nvidia/catkin_ws/src/wp3_humandetector/darknet_ros_UiA/darknet_ros/yolo_network_config/cfg"/>
 
 
   <!-- Load parameters -->
