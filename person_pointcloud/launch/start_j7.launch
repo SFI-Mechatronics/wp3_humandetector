@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+<machine name="master" address="localhost" />
+<machine name="jetson1" address="jetson1.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+<machine name="jetson2" address="jetson2.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+<machine name="jetson3" address="jetson3.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+<machine name="jetson4" address="jetson4.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+<machine name="jetson5" address="jetson5.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+<machine name="jetson6" address="jetson6.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+<machine name="jetson7" address="jetson7.wp3.localnet" env-loader="/home/nvidia/catkin_ws/devel/env.sh" user="nvidia" password="nvidia" default="false"/>
+
+    <!--detect perople-->
+    <include file="$(find darknet_ros)/launch/darknet_ros.launch">
+    <arg name="topic_in_depth"  value="/jetson7/sd/image_depth"/>
+    <arg name="topic_in_rgb"  value="/jetson7/sd/image_color_rect"/>
+    <arg name="machine_name"  value="jetson7"/>
+
+    <arg name="lengthAdded_"  value="200"/>
+    <arg name="thresHold"  value="0.5"/>
+    <arg name="Cx_"  value="254.281"/>
+    <arg name="fx_"  value="366.069"/>
+    <arg name="Cy_"  value="210.482"/>
+    <arg name="fy_"  value="366.069"/>
+    <arg name="xr_"  value="-2.15"/>
+    <arg name="yr_"  value="0.00"/>
+    <arg name="zr_"  value="0.00"/>
+    <arg name="xt_"  value="4500"/>
+    <arg name="yt_"  value="0"/>
+    <arg name="zt_"  value="3000"/>
+    </include>
+
+    <!--fuse coordinates-->
+    <node pkg="darknet_ros" type="sensor_fusion" name="sensor_fusion"/>
+
+    <!--create point clouds, cropped and segmented-->
+<!--    <include file="$(find person_pointcloud)/launch/person_points.launch"/>-->
+
+    <!--create cylinder-->
+    <node pkg="using_markers" type="one_cyl" name="one_cyl"/>
+
+
+</launch>

@@ -11,7 +11,8 @@
 	<!-- Jetson1 -->
 
 	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
-	<arg name="topic_in_depth"  value="/jetson1/sd/image_depth"/>
+        <arg name="topic_in_depth"  value="/jetson1/sd/image_depth_rect"/>
+<!--        <arg name="topic_in_depth"  value="/jetson1/sd/image_depth"/>-->
 	<arg name="topic_in_rgb"  value="/jetson1/sd/image_color_rect"/>
 	<arg name="machine_name"  value="jetson1"/>
 
@@ -32,7 +33,8 @@
 	<!-- Jetson2 -->
 
 	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
-	<arg name="topic_in_depth"  value="/jetson2/sd/image_depth"/>
+<!--        <arg name="topic_in_depth"  value="/jetson2/sd/image_depth"/>-->
+        <arg name="topic_in_depth"  value="/jetson2/sd/image_depth_rect"/>
 	<arg name="topic_in_rgb"  value="/jetson2/sd/image_color_rect"/>
 	<arg name="machine_name"  value="jetson2"/>
 
@@ -53,7 +55,8 @@
 	<!-- Jetson3 -->
 
 	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
-	<arg name="topic_in_depth"  value="/jetson3/sd/image_depth"/>
+<!--        <arg name="topic_in_depth"  value="/jetson3/sd/image_depth"/>-->
+        <arg name="topic_in_depth"  value="/jetson3/sd/image_depth_rect"/>
 	<arg name="topic_in_rgb"  value="/jetson3/sd/image_color_rect"/>
 	<arg name="machine_name"  value="jetson3"/>
 
@@ -76,7 +79,8 @@
 	<!-- Jetson4 -->
 
 	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
-	<arg name="topic_in_depth"  value="/jetson4/sd/image_depth"/>
+<!--        <arg name="topic_in_depth"  value="/jetson4/sd/image_depth"/>-->
+        <arg name="topic_in_depth"  value="/jetson4/sd/image_depth_rect"/>
 	<arg name="topic_in_rgb"  value="/jetson4/sd/image_color_rect"/>
 	<arg name="machine_name"  value="jetson4"/>
 
@@ -97,7 +101,8 @@
 	<!-- Jetson5 -->
 
 	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
-	<arg name="topic_in_depth"  value="/jetson5/sd/image_depth"/>
+<!--        <arg name="topic_in_depth"  value="/jetson5/sd/image_depth"/>-->
+        <arg name="topic_in_depth"  value="/jetson5/sd/image_depth_rect"/>
 	<arg name="topic_in_rgb"  value="/jetson5/sd/image_color_rect"/>
 	<arg name="machine_name"  value="jetson5"/>
 
@@ -118,7 +123,8 @@
 	<!-- Jetson6 -->
 
 	<include file="$(find darknet_ros)/launch/darknet_ros.launch">
-	<arg name="topic_in_depth"  value="/jetson6/sd/image_depth"/>
+<!--        <arg name="topic_in_depth"  value="/jetson6/sd/image_depth"/>-->
+        <arg name="topic_in_depth"  value="/jetson6/sd/image_depth_rect"/>
 	<arg name="topic_in_rgb"  value="/jetson6/sd/image_color_rect"/>
 	<arg name="machine_name"  value="jetson6"/>
 

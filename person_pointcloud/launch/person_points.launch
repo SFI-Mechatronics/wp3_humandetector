@@ -5,7 +5,7 @@
 output="screen"> 
 </node>
  
-<param name="minPoints"  value="100"/> 
+<param name="minPoints"  value="5"/>
 
 <node pkg="person_pointcloud" type="segmentation_jetson1" name="segmentation_jetson1"/>
 

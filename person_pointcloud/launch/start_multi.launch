@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
 
+
+    <node name="republish11" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson1/sd/image_depth raw out:=/jetson1/sd/image_depth" />
+    <node name="republish12" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson1/sd/image_color_rect raw out:=/jetson1/sd/image_color_rect" />
+    <node name="republish21" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson2/sd/image_depth raw out:=/jetson2/sd/image_depth" />
+    <node name="republish22" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson2/sd/image_color_rect raw out:=/jetson2/sd/image_color_rect" />
+    <node name="republish31" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson3/sd/image_depth raw out:=/jetson3/sd/image_depth" />
+    <node name="republish32" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson3/sd/image_color_rect raw out:=/jetson3/sd/image_color_rect" />
+    <node name="republish41" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson4/sd/image_depth raw out:=/jetson4/sd/image_depth" />
+    <node name="republish42" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson4/sd/image_color_rect raw out:=/jetson4/sd/image_color_rect" />
+    <node name="republish51" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson5/sd/image_depth raw out:=/jetson5/sd/image_depth" />
+    <node name="republish52" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson5/sd/image_color_rect raw out:=/jetson5/sd/image_color_rect" />
+    <node name="republish61" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson6/sd/image_depth raw out:=/jetson6/sd/image_depth" />
+    <node name="republish62" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson6/sd/image_color_rect raw out:=/jetson6/sd/image_color_rect" />
+
+
     <!--detect perople-->
     <include file="$(find darknet_ros)/launch/all_nodes.launch"/>
 
