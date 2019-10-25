@@ -2,7 +2,7 @@
 <launch>
 
 
-    <node name="republish11" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson1/sd/image_depth raw out:=/jetson1/sd/image_depth" />
+<!--    <node name="republish11" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson1/sd/image_depth raw out:=/jetson1/sd/image_depth" />
     <node name="republish12" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson1/sd/image_color_rect raw out:=/jetson1/sd/image_color_rect" />
     <node name="republish21" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson2/sd/image_depth raw out:=/jetson2/sd/image_depth" />
     <node name="republish22" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson2/sd/image_color_rect raw out:=/jetson2/sd/image_color_rect" />
@@ -13,17 +13,17 @@
     <node name="republish51" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson5/sd/image_depth raw out:=/jetson5/sd/image_depth" />
     <node name="republish52" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson5/sd/image_color_rect raw out:=/jetson5/sd/image_color_rect" />
     <node name="republish61" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson6/sd/image_depth raw out:=/jetson6/sd/image_depth" />
-    <node name="republish62" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson6/sd/image_color_rect raw out:=/jetson6/sd/image_color_rect" />
+    <node name="republish62" type="republish" pkg="image_transport" output="screen" 	args="compressed in:=/jetson6/sd/image_color_rect raw out:=/jetson6/sd/image_color_rect" />-->
 
 
     <!--detect perople-->
     <include file="$(find darknet_ros)/launch/all_nodes.launch"/>
 
     <!--fuse coordinates-->
-    <node pkg="darknet_ros" type="sensor_fusion" name="sensor_fusion"/>
+    <!--<node pkg="darknet_ros" type="sensor_fusion" name="sensor_fusion"/>-->
 
     <!--create point clouds, cropped and segmented-->
-    <include file="$(find person_pointcloud)/launch/person_points.launch"/>
+<!--    <include file="$(find person_pointcloud)/launch/person_points.launch"/>-->
 
     <!--create cylinder-->
     <node pkg="using_markers" type="cylinder" name="cylinder"/>

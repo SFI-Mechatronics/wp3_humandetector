@@ -29,6 +29,9 @@ publishers:
     queue_size: 1
     latch: true
 
+  poseArray:
+    topic: /poseArray
+
 image_view:
 
   enable_opencv: true

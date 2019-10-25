@@ -197,51 +197,44 @@ int main( int argc, char *argv[])
 
 		// if another node have already made a cylinder for a specific person, this nodes ignores it
              
-		 for(int i =0; i < obj_J1.num; i++)
-              {
+            for(int i =0; i < obj_J1.num; i++)
+            {
               double Xdiff21[i];
               Xdiff21[i] = abs(coords_J1.X[i] - coords_J2.X[j]);
               double Ydiff21[i];
               Ydiff21[i] = abs(coords_J1.Y[i] - coords_J2.Y[j]);
               if(Xdiff21[i] < 450.0 && Ydiff21[i] < 450.0)
               {
-                  equal = true;
+                equal = true;
               }
-              }
-              if(coords_J2.Z[j] > 50.0 && coords_J2.Z[j] < 2000.0 && equal == false)
-              {
+            }
+            if(coords_J2.Z[j] > 50.0 && coords_J2.Z[j] < 2000.0 && equal == false)
+            {
+              cyl_J2.markers[j].header.frame_id = "world";
+              cyl_J2.markers[j].header.stamp = ros::Time::now();
+              cyl_J2.markers[j].id = j+20;
+              cyl_J2.markers[j].ns ="cylinders_J2";
+              cyl_J2.markers[j].action = visualization_msgs::Marker::ADD;
+              cyl_J2.markers[j].type = visualization_msgs::Marker::CYLINDER;
 
-                  cyl_J2.markers[j].header.frame_id = "world";
-                  cyl_J2.markers[j].header.stamp = ros::Time::now();
-                  cyl_J2.markers[j].id = j+20;
-                  cyl_J2.markers[j].ns ="cylinders_J2";
-                  cyl_J2.markers[j].action = visualization_msgs::Marker::ADD;
-                  cyl_J2.markers[j].type = visualization_msgs::Marker::CYLINDER;
+              cyl_J2.markers[j].pose.position.x = coords_J2.X[j] / 1000;
+              cyl_J2.markers[j].pose.position.y = coords_J2.Y[j] / 1000;
+              cyl_J2.markers[j].pose.position.z = coords_J2.Z[j] / 1000;
+              cyl_J2.markers[j].pose.orientation.x = 0.0;
+              cyl_J2.markers[j].pose.orientation.y = 0.0;
+              cyl_J2.markers[j].pose.orientation.z = 0.0;
+              cyl_J2.markers[j].pose.orientation.w = 1.0;
 
-                  
-                  cyl_J2.markers[j].pose.position.x = coords_J2.X[j] / 1000;
-                  cyl_J2.markers[j].pose.position.y = coords_J2.Y[j] / 1000;
-                  cyl_J2.markers[j].pose.position.z = coords_J2.Z[j] / 1000;
-                  cyl_J2.markers[j].pose.orientation.x = 0.0;
-                  cyl_J2.markers[j].pose.orientation.y = 0.0;
-                  cyl_J2.markers[j].pose.orientation.z = 0.0;
-                  cyl_J2.markers[j].pose.orientation.w = 1.0;
+              cyl_J2.markers[j].scale.x = 1.0;
+              cyl_J2.markers[j].scale.y = 1.0;
+              cyl_J2.markers[j].scale.z = 2 * coords_J2.Z[j] / 1000;
 
-
-
-                  
-                  cyl_J2.markers[j].scale.x = 1.0;
-                  cyl_J2.markers[j].scale.y = 1.0;
-                  cyl_J2.markers[j].scale.z = 2 * coords_J2.Z[j] / 1000;
-
-                  
-                  cyl_J2.markers[j].color.r = 0.0f;
-                  cyl_J2.markers[j].color.g = 1.0f;
-                  cyl_J2.markers[j].color.b = 0.0f;
-                  cyl_J2.markers[j].color.a = 0.5;
-                  cyl_J2.markers[j].lifetime = ros::Duration(0.067);
-              }
-
+              cyl_J2.markers[j].color.r = 0.0f;
+              cyl_J2.markers[j].color.g = 1.0f;
+              cyl_J2.markers[j].color.b = 0.0f;
+              cyl_J2.markers[j].color.a = 0.5;
+              cyl_J2.markers[j].lifetime = ros::Duration(0.067);
+            }
 
           }
 	// Repeat for the rest of the nodes

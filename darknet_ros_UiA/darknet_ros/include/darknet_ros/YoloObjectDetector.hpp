@@ -38,6 +38,8 @@
    #include <message_filters/time_synchronizer.h>                //For depth inclussion
    #include <message_filters/sync_policies/approximate_time.h>   //For depth inclussion
    #include <image_transport/subscriber_filter.h>                //For depth inclussion
+   // AAA 2019
+   #include <geometry_msgs/PoseArray.h>
 
    // OpenCv
    #include <opencv2/imgproc/imgproc.hpp>
@@ -140,6 +142,9 @@ namespace darknet_ros
       image_transport::Subscriber imageSubscriber_;
       ros::Publisher objectPublisher_;
       ros::Publisher boundingBoxesPublisher_;
+      // AAA 2019
+      ros::Publisher poseArrayPublisher_;
+
 
       // Syncronizing Image messages - For depth inclussion
       typedef image_transport::SubscriberFilter ImageSubscriberFilter;
@@ -166,6 +171,8 @@ namespace darknet_ros
       std::vector<std::vector<RosBox_> > rosBoxes_;
       std::vector<int> rosBoxCounter_;
       darknet_ros_msgs::BoundingBoxes boundingBoxesResults_;
+      // AAA 2019
+      geometry_msgs::PoseArray poseArray_;
 
       // Camera related parameters.
       int frameWidth_;

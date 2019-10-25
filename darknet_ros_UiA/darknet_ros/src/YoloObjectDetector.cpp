@@ -153,6 +153,8 @@ namespace darknet_ros
       std::string detectionImageTopicName;
       int detectionImageQueueSize;
       bool detectionImageLatch;
+      //AAA 2019
+      std::string poseArrayTopicName;
 
       std::string depthTopicName;        //For depth inclussion
       int depthQueueSize;                //For depth inclussion
@@ -175,11 +177,17 @@ namespace darknet_ros
       nodeHandle_.param("publishers/detection_image/queue_size", detectionImageQueueSize, 1);
       nodeHandle_.param("publishers/detection_image/latch", detectionImageLatch, true);
 
+      //AAA 2019
+      nodeHandle_.param("publishers/poseArray/topic", poseArrayTopicName, std::string("detection_poseArray"));
+
       sync_1.registerCallback(boost::bind(&YoloObjectDetector::cameraCallback,this,_1,_2));   //For depth inclussion
 
       objectPublisher_ = nodeHandle_.advertise<std_msgs::Int8>(objectDetectorTopicName, objectDetectorQueueSize, objectDetectorLatch);
       boundingBoxesPublisher_ = nodeHandle_.advertise<darknet_ros_msgs::BoundingBoxes>(boundingBoxesTopicName, boundingBoxesQueueSize, boundingBoxesLatch);
       detectionImagePublisher_ = nodeHandle_.advertise<sensor_msgs::Image>(detectionImageTopicName, detectionImageQueueSize, detectionImageLatch);
+
+      // AAA 2019
+      poseArrayPublisher_ = nodeHandle_.advertise<geometry_msgs::PoseArray>(poseArrayTopicName, 1, false);
 
       // Action servers.
       std::string checkForObjectsActionName;
@@ -726,6 +734,18 @@ namespace darknet_ros
          boundingBoxesResults_.header.frame_id = "detection";
          boundingBoxesResults_.image_header = imageHeader_;
          boundingBoxesPublisher_.publish(boundingBoxesResults_);
+
+
+         poseArray_.header.stamp = ros::Time::now();
+         poseArray_.header.frame_id = "pose";
+         poseArray_.poses[0].position.x = 2;
+         poseArray_.poses[0].position.y = 2;
+         poseArray_.poses[0].position.z = 2;
+         poseArray_.poses[0].orientation.x = 0;
+         poseArray_.poses[0].orientation.y = 0;
+         poseArray_.poses[0].orientation.z = 0;
+         poseArray_.poses[0].orientation.w = 0;
+         poseArrayPublisher_.publish(poseArray_);
       }
       
       else

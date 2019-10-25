@@ -36,6 +36,7 @@
   <remap from="/darknet_ros/bounding_boxes" to="$(arg machine_name)_darknet_ros/bounding_boxes"/>
   <remap from="/darknet_ros/detection_image" to="$(arg machine_name)_darknet_ros/detection_image"/>
   <remap from="/darknet_ros/found_object" to="$(arg machine_name)_darknet_ros/found_object"/>
+  <remap from="/poseArray" to="$(arg machine_name)/people"/> <!--AAA 2019-->
 
 
   <!-- Config and weights folder. -->
