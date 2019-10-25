@@ -736,16 +736,16 @@ namespace darknet_ros
          boundingBoxesPublisher_.publish(boundingBoxesResults_);
 
 
-         poseArray_.header.stamp = ros::Time::now();
-         poseArray_.header.frame_id = "pose";
-         poseArray_.poses[0].position.x = 2;
-         poseArray_.poses[0].position.y = 2;
-         poseArray_.poses[0].position.z = 2;
-         poseArray_.poses[0].orientation.x = 0;
-         poseArray_.poses[0].orientation.y = 0;
-         poseArray_.poses[0].orientation.z = 0;
-         poseArray_.poses[0].orientation.w = 0;
-         poseArrayPublisher_.publish(poseArray_);
+//         poseArray_.header.stamp = ros::Time::now();
+//         poseArray_.header.frame_id = "pose";
+//         poseArray_.poses[0].position.x = 2;
+//         poseArray_.poses[0].position.y = 2;
+//         poseArray_.poses[0].position.z = 2;
+//         poseArray_.poses[0].orientation.x = 0;
+//         poseArray_.poses[0].orientation.y = 0;
+//         poseArray_.poses[0].orientation.z = 0;
+//         poseArray_.poses[0].orientation.w = 0;
+//         poseArrayPublisher_.publish(poseArray_);
       }
       
       else
