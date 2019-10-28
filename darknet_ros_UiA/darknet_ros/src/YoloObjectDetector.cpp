@@ -732,13 +732,13 @@ namespace darknet_ros
                p++; //uia
 
                // AAA 2019
-               pose.position.x = Xg;
-               pose.position.y = Yg;
-               pose.position.z = Zg;
+               pose.position.x = Xg/1000;
+               pose.position.y = Yg/1000;
+               pose.position.z = Zg/1000;
                pose.orientation.x = 0.0;
-               pose.orientation.y = 0.0;
+               pose.orientation.y = -0.70711; // point up
                pose.orientation.z = 0.0;
-               pose.orientation.w = 1.0;
+               pose.orientation.w = 0.70711;
                poseArray_.poses.push_back(pose);
              }
            }
