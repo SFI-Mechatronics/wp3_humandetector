@@ -682,52 +682,66 @@ namespace darknet_ros
          msg.data = num;
          objectPublisher_.publish(msg);
 
+         poseArray_.poses.clear();  // AAA 2019
+
          for (int i = 0; i < numClasses_; i++)
          {
-            if (rosBoxCounter_[i] > 0)
-            {
-               darknet_ros_msgs::BoundingBox boundingBox;
+           if (rosBoxCounter_[i] > 0)
+           {
+             darknet_ros_msgs::BoundingBox boundingBox;
 
-               for (int j = 0; j < rosBoxCounter_[i]; j++)
-               {
-                  int xmin = (rosBoxes_[i][j].x - rosBoxes_[i][j].w / 2) * frameWidth_;
-                  int ymin = (rosBoxes_[i][j].y - rosBoxes_[i][j].h / 2) * frameHeight_;
-                  int xmax = (rosBoxes_[i][j].x + rosBoxes_[i][j].w / 2) * frameWidth_;
-                  int ymax = (rosBoxes_[i][j].y + rosBoxes_[i][j].h / 2) * frameHeight_;
-      		  float Uc = ((xmax-xmin)/2+xmin); //uia: get pixel center(u) for color image
-      		  float Vc = ((ymax-ymin)/2+ymin); //uia: get pixel center(u) for color image
-		  float Uir = Uc; //uia: get pixel center(u) for depth image. Edit: Now the same as color image
-		  float Vir = Vc; //uia: get pixel center(u) for depth image. Edit: Now the same as color image
-		  float Virmax = ymax; //uia: get pixel coordinate of top of person Edit: Now the same as ymax
-	          float Virmin = ymin; //uia: get pixel coordinate of top of person Edit: Now the same as ymin
-                  YoloObjectDetector::Coordinates(i, xmin, ymin, xmax, ymax, Uc, Vc, Uir, Vir, Virmax, Virmin, num, p);
+             for (int j = 0; j < rosBoxCounter_[i]; j++)
+             {
+               int xmin = (rosBoxes_[i][j].x - rosBoxes_[i][j].w / 2) * frameWidth_;
+               int ymin = (rosBoxes_[i][j].y - rosBoxes_[i][j].h / 2) * frameHeight_;
+               int xmax = (rosBoxes_[i][j].x + rosBoxes_[i][j].w / 2) * frameWidth_;
+               int ymax = (rosBoxes_[i][j].y + rosBoxes_[i][j].h / 2) * frameHeight_;
+               float Uc = ((xmax-xmin)/2+xmin); //uia: get pixel center(u) for color image
+               float Vc = ((ymax-ymin)/2+ymin); //uia: get pixel center(u) for color image
+               float Uir = Uc; //uia: get pixel center(u) for depth image. Edit: Now the same as color image
+               float Vir = Vc; //uia: get pixel center(u) for depth image. Edit: Now the same as color image
+               float Virmax = ymax; //uia: get pixel coordinate of top of person Edit: Now the same as ymax
+               float Virmin = ymin; //uia: get pixel coordinate of top of person Edit: Now the same as ymin
+               YoloObjectDetector::Coordinates(i, xmin, ymin, xmax, ymax, Uc, Vc, Uir, Vir, Virmax, Virmin, num, p);
 
-                  boundingBox.Class = classLabels_[i];
-                  boundingBox.probability = rosBoxes_[i][j].prob;
-                  boundingBox.xmin = xmin;
-                  boundingBox.ymin = ymin;
-                  boundingBox.xmax = xmax;
-                  boundingBox.ymax = ymax;
-                  boundingBox.X = X; //uia: local 3D-coordinates of detected person
-                  boundingBox.Y = Y; //uia: local 3D-coordinates of detected person
-                  boundingBox.Z = Z; //uia: local 3D-coordinates of detected person
-                  boundingBox.Xg = Xg; //uia: global 3D-coordinates of detected person
-                  boundingBox.Yg = Yg; //uia: global 3D-coordinates of detected person
-                  boundingBox.Zg = Zg; //uia: global 3D-coordinates of detected person
-		  boundingBox.Ymax = Ymax; //uia
-		  boundingBox.Ymin = Ymin; //uia
-		  boundingBox.Uc = Uc; //uia
-		  boundingBox.Vc = Vc; //uia
-		  boundingBox.Uir = Uir; //uia
-		  boundingBox.Vir = Vir; //uia
-		  boundingBox.Virmax = Virmax; //uia
-		  boundingBox.Virmin = Virmin; //uia
-                  boundingBox.Invalid = Invalid;
-		  boundingBox.num = num; //uia
-                  boundingBoxesResults_.bounding_boxes.push_back(boundingBox);
-		  p++; //uia
-               }
-            }
+               geometry_msgs::Pose pose;  // AAA 2019
+
+               boundingBox.Class = classLabels_[i];
+               boundingBox.probability = rosBoxes_[i][j].prob;
+               boundingBox.xmin = xmin;
+               boundingBox.ymin = ymin;
+               boundingBox.xmax = xmax;
+               boundingBox.ymax = ymax;
+               boundingBox.X = X; //uia: local 3D-coordinates of detected person
+               boundingBox.Y = Y; //uia: local 3D-coordinates of detected person
+               boundingBox.Z = Z; //uia: local 3D-coordinates of detected person
+               boundingBox.Xg = Xg; //uia: global 3D-coordinates of detected person
+               boundingBox.Yg = Yg; //uia: global 3D-coordinates of detected person
+               boundingBox.Zg = Zg; //uia: global 3D-coordinates of detected person
+               boundingBox.Ymax = Ymax; //uia
+               boundingBox.Ymin = Ymin; //uia
+               boundingBox.Uc = Uc; //uia
+               boundingBox.Vc = Vc; //uia
+               boundingBox.Uir = Uir; //uia
+               boundingBox.Vir = Vir; //uia
+               boundingBox.Virmax = Virmax; //uia
+               boundingBox.Virmin = Virmin; //uia
+               boundingBox.Invalid = Invalid;
+               boundingBox.num = num; //uia
+               boundingBoxesResults_.bounding_boxes.push_back(boundingBox);
+               p++; //uia
+
+               // AAA 2019
+               pose.position.x = Xg;
+               pose.position.y = Yg;
+               pose.position.z = Zg;
+               pose.orientation.x = 0.0;
+               pose.orientation.y = 0.0;
+               pose.orientation.z = 0.0;
+               pose.orientation.w = 1.0;
+               poseArray_.poses.push_back(pose);
+             }
+           }
          }
 
          boundingBoxesResults_.header.stamp = ros::Time::now();
@@ -735,35 +749,9 @@ namespace darknet_ros
          boundingBoxesResults_.image_header = imageHeader_;
          boundingBoxesPublisher_.publish(boundingBoxesResults_);
 
-// AAA 2019
+         // AAA 2019
          poseArray_.header.stamp = ros::Time::now();
          poseArray_.header.frame_id = "world";
-         poseArray_.poses.clear();
-		 geometry_msgs::Pose p;
-		 p.position.x = 2;
-    	 p.position.y = 2;
-    	 p.position.z = 2;
-         p.orientation.x = 0.0;
-         p.orientation.y = 0.0;
-         p.orientation.z = 0.0;
-         p.orientation.w = 1.0;
-         poseArray_.poses.push_back(p);
-         p.position.x = 3;
-    	 p.position.y = 2;
-    	 p.position.z = 2;
-         p.orientation.x = 0.0;
-         p.orientation.y = 0.0;
-         p.orientation.z = 0.0;
-         p.orientation.w = 1.0;
-         poseArray_.poses.push_back(p);
-         p.position.x = 4;
-    	 p.position.y = 2;
-    	 p.position.z = 2;
-         p.orientation.x = 0.0;
-         p.orientation.y = 0.0;
-         p.orientation.z = 0.0;
-         p.orientation.w = 1.0;
-         poseArray_.poses.push_back(p);
          poseArrayPublisher_.publish(poseArray_);
 
       }
