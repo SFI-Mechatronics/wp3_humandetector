@@ -735,17 +735,37 @@ namespace darknet_ros
          boundingBoxesResults_.image_header = imageHeader_;
          boundingBoxesPublisher_.publish(boundingBoxesResults_);
 
+// AAA 2019
+         poseArray_.header.stamp = ros::Time::now();
+         poseArray_.header.frame_id = "world";
+         poseArray_.poses.clear();
+		 geometry_msgs::Pose p;
+		 p.position.x = 2;
+    	 p.position.y = 2;
+    	 p.position.z = 2;
+         p.orientation.x = 0.0;
+         p.orientation.y = 0.0;
+         p.orientation.z = 0.0;
+         p.orientation.w = 1.0;
+         poseArray_.poses.push_back(p);
+         p.position.x = 3;
+    	 p.position.y = 2;
+    	 p.position.z = 2;
+         p.orientation.x = 0.0;
+         p.orientation.y = 0.0;
+         p.orientation.z = 0.0;
+         p.orientation.w = 1.0;
+         poseArray_.poses.push_back(p);
+         p.position.x = 4;
+    	 p.position.y = 2;
+    	 p.position.z = 2;
+         p.orientation.x = 0.0;
+         p.orientation.y = 0.0;
+         p.orientation.z = 0.0;
+         p.orientation.w = 1.0;
+         poseArray_.poses.push_back(p);
+         poseArrayPublisher_.publish(poseArray_);
 
-//         poseArray_.header.stamp = ros::Time::now();
-//         poseArray_.header.frame_id = "pose";
-//         poseArray_.poses[0].position.x = 2;
-//         poseArray_.poses[0].position.y = 2;
-//         poseArray_.poses[0].position.z = 2;
-//         poseArray_.poses[0].orientation.x = 0;
-//         poseArray_.poses[0].orientation.y = 0;
-//         poseArray_.poses[0].orientation.z = 0;
-//         poseArray_.poses[0].orientation.w = 0;
-//         poseArrayPublisher_.publish(poseArray_);
       }
       
       else
